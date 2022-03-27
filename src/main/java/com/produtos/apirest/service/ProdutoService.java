@@ -1,11 +1,13 @@
 package com.produtos.apirest.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import com.produtos.apirest.models.Produto;
 import com.produtos.apirest.repository.ProdutoRepository;
 
@@ -19,18 +21,21 @@ public class ProdutoService {
 		return produtoRepository.findAll();
 	}
 
-	public Produto getProduto(Long id) {
-		Produto produto = null;
-		if (id == null || id == 0L)
-			System.out.println("Id do usuário deve ser informado");
-		produto = produtoRepository.getById(id);
-		if (produto == null) {
-			System.out.println("Usuário não encontrado.");
-		}
-		return produto;
+	public Produto BuscarPorId(Long id) {
+		Optional<Produto> produto = produtoRepository.findById(id);
+		return produto.orElseThrow(() -> new ObjectNotFoundException(id, "Objeto não encontrado"));
 	}
 	
 	public Produto salvarProduto(@RequestBody Produto produto) {
 		return produtoRepository.save(produto);
 	}
+	
+	/*public void delete (@RequestBody Produto produto) {
+		produtoRepository.delete(produto);
+	}*/
+
+	public void delete(Long id) {
+		produtoRepository.deleteById(id);
+	}
+	
 }
