@@ -1,5 +1,10 @@
 package com.produtos.apirest.config;
 
+<<<<<<< HEAD
+=======
+import static springfox.documentation.builders.PathSelectors.regex;
+
+>>>>>>> 806e094dc2e677b12552f7052be961c5c5aa2a10
 import java.util.ArrayList;
 
 import org.springframework.context.annotation.Bean;
