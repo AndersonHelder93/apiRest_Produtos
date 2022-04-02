@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import com.produtos.apirest.models.Produto;
 import com.produtos.apirest.repository.ProdutoRepository;
 
